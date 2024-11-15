@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 
 models=(
   "Qwen/CodeQwen1.5-7B-Chat"
