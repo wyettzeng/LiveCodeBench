@@ -109,7 +109,7 @@ LanguageModelList: list[LanguageModel] = [
         "LLama3.1-8b-Ins",
         LMStyle.LLaMa3,
         datetime(2023, 1, 1),
-        link="https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct",
+        link="https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
     ),
     LanguageModel(
         "meta-llama/Meta-Llama-3.1-70B-Instruct",
