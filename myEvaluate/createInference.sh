@@ -5,8 +5,8 @@ models=(
   # "Qwen/Qwen2.5-Coder-7B-Instruct"
   # "NTQAI/Nxcode-CQ-7B-orpo"
   # "meta-llama/Meta-Llama-3-8B-Instruct"
-  # "mistralai/Mistral-7B-Instruct-v0.3"
-  "codellama/CodeLlama-7b-Instruct-hf"
+  "mistralai/Mistral-7B-Instruct-v0.3"
+  # "codellama/CodeLlama-7b-Instruct-hf"
   # "meta-llama/Llama-3.1-8B-Instruct"
 )
 
