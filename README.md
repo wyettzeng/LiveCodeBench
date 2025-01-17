@@ -4,7 +4,8 @@ Official repository for the paper "LiveCodeBench: Holistic and Contamination Fre
 <p align="center">
     <a href="https://livecodebench.github.io/">🏠 Home Page</a> •
     <a href="https://huggingface.co/datasets/livecodebench/">💻 Data </a> •
-    <a href="https://livecodebench.github.io/leaderboard.html">🏆 Leaderboard</a> 
+    <a href="https://livecodebench.github.io/leaderboard.html">🏆 Leaderboard</a> •
+    <a href="https://livecodebench.github.io/leaderboard.html](https://huggingface.co/spaces/livecodebench/code_generation_samples">🔍 Explorer</a> 
 </p>
 
 ## Introduction
@@ -46,8 +47,9 @@ Since LiveCodeBench is a continuously updated benchmark, we provide different ve
 - `release_v2`: The updated release of the dataset with problems released between May 2023 and May 2024 containing 511 problems.
 - `release_v3`: The updated release of the dataset with problems released between May 2023 and Jul 2024 containing 612 problems.
 - `release_v4`: The updated release of the dataset with problems released between May 2023 and Sep 2024 containing 713 problems.
+- `release_v5`: The updated release of the dataset with problems released between May 2023 and Jan 2025 containing 880 problems.
 
-You can use the `--release_version` flag to specify the dataset version you wish to use. Particularly, you can use the following command to run the evaluation on the `release_v2` dataset. Release version defaults to `release_latest`.
+You can use the `--release_version` flag to specify the dataset version you wish to use. Particularly, you can use the following command to run the evaluation on the `release_v2` dataset. Release version defaults to `release_latest`. Additionally, we have introduced fine-grained release versions such as `v1`, `v2`, `v1_v3`, `v4_v5` for specific versions of the dataset.
 
 ```bash
 python -m lcb_runner.runner.main --model {model_name} --scenario codegeneration --evaluate --release_version release_v2
@@ -163,7 +165,7 @@ if LanguageModelStyle == LMStyle.DeepSeekCodeInstruct:
 ```
 
 ## Submit Models to Leaderboard
-To submit models to the leaderboard you can fill out [this form](https://forms.gle/h2abvAHh6UnhWzzd9). You will need to fill out model details and provide the generated evaluation file with model generations and pass@1 scores. We will review the submission and add the model to the leaderboard accordingly.
+We are currently only accepting submissions for only the code generation scenario. To submit models you can create a pull request on our [submissions](https://github.com/LiveCodeBench/submissions). Particularly, you can copy your model generations folder from `output` to the `submissions` folder and create a pull request. We will review the submission and add the model to the leaderboard accordingly. 
 
 ## ERRATA
 We maintain a list of known issues and updates in the [ERRATA.md](./ERRATA.md) file. Particularly, we document issues regarding erroneous tests and problems not amenable to autograding. We are constantly using this feedback to improve our problem selection heuristics as we update LiveCodeBench.
