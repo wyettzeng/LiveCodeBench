@@ -469,6 +469,13 @@ LanguageModelList: list[LanguageModel] = [
         link="https://huggingface.co/google/gemma-2b",
     ),
     LanguageModel(
+        "mistralai/Mistral-7B-Instruct-v0.3",
+        "Mistral-v0.3-7b-Instruct",
+        LMStyle.GenericBase,
+        datetime(2023, 1, 1),
+        link="https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+    ),
+    LanguageModel(
         "mistral-large-latest",
         "Mistral-Large",
         LMStyle.MistralWeb,
