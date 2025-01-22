@@ -7,5 +7,5 @@ model="codellama/CodeLlama-7b-Instruct-hf"
 
 
 # for evaluation
-python -m lcb_runner.runner.main --model $model --scenario codegeneration --continue_existing_with_eval --num_process_evaluate 1 --timeout 1 --max_tokens 1024 --evaluate --n 32 --temperature 1.0
-python -m lcb_runner.runner.main --model $model --scenario codegeneration --continue_existing_with_eval --num_process_evaluate 1 --timeout 1 --max_tokens 1024 --evaluate --n 64 --temperature 1.0
+python -m lcb_runner.runner.main --model $model --scenario codegeneration --continue_existing_with_eval --num_process_evaluate 1 --timeout 1 --max_tokens 1024 --evaluate --n 32 --temperature 1.0  --release_version release_v4
+# python -m lcb_runner.runner.main --model $model --scenario codegeneration --continue_existing_with_eval --num_process_evaluate 1 --timeout 1 --max_tokens 1024 --evaluate --n 64 --temperature 1.0
