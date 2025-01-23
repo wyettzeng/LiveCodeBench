@@ -117,7 +117,6 @@ def main():
                 return
 
             print(f"Found {old_eval_size}, running evals for {new_eval_size} problems")
-
             metrics = get_metrics(args.scenario, args, benchmark, combined_results)
             graded = extract_instance_results(metrics[1])
 
