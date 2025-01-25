@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Available GPUs
-cuda_devices=(0 1 2)
+cuda_devices=(1 2)
 
 # We’ll store all commands in an array
 declare -a commands=()
 
 models=(
-#   "CodeDPO/qwen25-ins-7b-coderm-reinforce-plus"
-#   "CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus"
+  "CodeDPO/qwen25-ins-7b-coderm-reinforce-plus"
+  "CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus"
   "Qwen/Qwen2.5-7B-Instruct"
 )
 

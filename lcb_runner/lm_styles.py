@@ -568,14 +568,14 @@ LanguageModelList: list[LanguageModel] = [
     ),
     LanguageModel(
         "CodeDPO/qwen25-ins-7b-coderm-reinforce-plus",
-        "Qwen2.5-Ins-7B",
+        "Qwen2.5-RL_rm_scorfe",
         LMStyle.CodeQwenInstruct,
         datetime(2023, 8, 30),
         link="https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
     ),
     LanguageModel(
         "CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus",
-        "Qwen2.5-Ins-7B",
+        "Qwen2.5-RL_acc_score",
         LMStyle.CodeQwenInstruct,
         datetime(2023, 8, 30),
         link="https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",

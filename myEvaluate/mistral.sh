@@ -8,7 +8,7 @@ n_lst=(
   64
 )
 
-python -m lcb_runner.runner.main --model $model --scenario codegeneration --evaluate --release_version release_v4
+# python -m lcb_runner.runner.main --model $model --scenario codegeneration --evaluate --release_version release_v4
 
 for n in ${n_lst[@]}
 do
