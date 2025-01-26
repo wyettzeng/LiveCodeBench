@@ -2,10 +2,17 @@
 
 # specific script used solely for debugging codellama greedy decoding result
 model="codellama/CodeLlama-7b-Instruct-hf"
-# python -m lcb_runner.runner.main --model $model --scenario codegeneration --evaluate --max_tokens 1024 --evaluate --n 32 --temperature 1.0 --release_version "release_v4"
-# python -m lcb_runner.runner.main --model $model --scenario codegeneration --evaluate --max_tokens 1024 --evaluate --n 64 --temperature 1.0 --release_version "release_v4"
 
+n_lst=(
+#   16
+  32
+  64
+)
 
-# for evaluation
-python -m lcb_runner.runner.main --model $model --scenario codegeneration --continue_existing_with_eval --max_tokens 1024 --evaluate --n 32 --temperature 1.0 --release_version "release_v4"
-# python -m lcb_runner.runner.main --model $model --scenario codegeneration --continue_existing_with_eval --max_tokens 1024 --evaluate --n 64 --temperature 1.0 --release_version "release_v4"
+# python -m lcb_runner.runner.main --model $model --scenario codegeneration --evaluate --release_version release_v4
+
+for n in ${n_lst[@]}
+do
+  # best of n
+  python -m lcb_runner.runner.main --model $model --scenario codegeneration --evaluate --n ${n} --temperature 1.0 --release_version release_v4
+done

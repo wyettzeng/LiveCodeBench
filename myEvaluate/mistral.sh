@@ -4,8 +4,8 @@ model="mistralai/Mistral-7B-Instruct-v0.3"
 
 n_lst=(
   16
-  32
-  64
+  # 32
+  # 64
 )
 
 # python -m lcb_runner.runner.main --model $model --scenario codegeneration --evaluate --release_version release_v4
