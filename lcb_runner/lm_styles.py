@@ -566,20 +566,53 @@ LanguageModelList: list[LanguageModel] = [
         datetime(2023, 8, 30),
         link="https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
     ),
+    # -------- Custom RL Model ----------
     LanguageModel(
         "CodeDPO/qwen25-ins-7b-coderm-reinforce-plus",
-        "Qwen2.5-RL_rm_scorfe",
+        "qwen25-ins-7b-coderm-reinforce-plus",
         LMStyle.CodeQwenInstruct,
         datetime(2023, 8, 30),
-        link="https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
+        link="https://huggingface.co/CodeDPO/qwen25-ins-7b-coderm-reinforce-plus",
     ),
     LanguageModel(
         "CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus",
-        "Qwen2.5-RL_acc_score",
+        "qwen25-ins-7b-testcaserm-7b-reinforce-plus",
         LMStyle.CodeQwenInstruct,
         datetime(2023, 8, 30),
-        link="https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
+        link="https://huggingface.co/CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus",
     ),
+    LanguageModel(
+        "CodeDPO/qwen25-coder-base-7b-testcaserm-7b-ppo-binary",
+        "qwen25-coder-base-7b-testcaserm-7b-ppo-binary",
+        LMStyle.GenericBase,
+        datetime(2023, 8, 30),
+        link="https://huggingface.co/CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus",
+    ),
+    LanguageModel(
+        "CodeDPO/qwen25-ins-7b-coderm-7b-ppo",
+        "qwen25-ins-7b-coderm-7b-ppo",
+        LMStyle.CodeQwenInstruct,
+        datetime(2023, 8, 30),
+        link="https://huggingface.co/CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus",
+    ),
+    LanguageModel(
+        "CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus_new_dataset",
+        "qwen25-ins-7b-testcaserm-7b-reinforce-plus_new_dataset",
+        LMStyle.CodeQwenInstruct,
+        datetime(2023, 8, 30),
+        link="https://huggingface.co/CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus",
+    ),
+    LanguageModel(
+        "CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus-binary",
+        "qwen25-ins-7b-testcaserm-7b-reinforce-plus-binary",
+        LMStyle.CodeQwenInstruct,
+        datetime(2023, 8, 30),
+        link="https://huggingface.co/CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus",
+    ),
+    # -------- Custom RL Model ----------
+
+
+
     LanguageModel(
         "Qwen/Qwen2.5-32B",
         "Qwen2.5-Base-32B",
