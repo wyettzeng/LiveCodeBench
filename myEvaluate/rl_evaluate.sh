@@ -1,15 +1,18 @@
 #!/bin/bash
 
 # Available GPUs
-cuda_devices=(4)
+cuda_devices=(0 1 2 3)
 
 # We’ll store all commands in an array
 declare -a commands=()
 
 models=(
-  "/data/code_llm/trained/qwen25-coder-7b-testcasermbinaryFalse-7b-reinforcepp_new_dataset_hard"
-  "/data/code_llm/trained/qwen25-coder-7b-testcasermbinaryTrue-7b-reinforcepp_new_dataset_hard-binary"
-  "CodeDPO/qwen25-coder-base-7b-testcaserm-7b-new-dataset-hard"
+    "CodeDPO/qwen25-coder-base-7b-testcaserm-7b-new-dataset-hard"
+    "CodeDPO/qwen25-ins-7b-coderm_new_margin_scalebt-7b-reinforce-plus-episode_1"
+    "/data/code_llm/trained/qwen25-base-7b-rm-7b-reinforcepp_new_dataset_hard"
+    "/data/code_llm/trained/qwen25-coder-7b-rm-7b-reinforcepp_new_dataset_hard"
+    "/data/code_llm/trained/qwen25-coder-7b-testcasermbinaryFalse-7b-reinforcepp_new_dataset_hard"
+    "/data/code_llm/trained/qwen25-coder-7b-testcasermbinaryTrue-7b-reinforcepp_new_dataset_hard-binary"
 )
 
 

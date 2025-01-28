@@ -5,3 +5,6 @@ conda init
 conda activate livecodebench
 pip install poetry
 poetry install --with with-gpu
+
+# most models are now newer
+pip install transformers --upgrade
