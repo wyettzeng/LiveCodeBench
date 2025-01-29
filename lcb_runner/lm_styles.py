@@ -648,11 +648,25 @@ LanguageModelList: list[LanguageModel] = [
         link="https://huggingface.co/CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus",
     ),
     LanguageModel(
+        "CodeDPO/qwen25-coder-inst-7b-testcaserm2-7b-reinforce_plus_new_dataset_hard",
+        "qwen25-coder-inst-7b-testcaserm2-7b-reinforce_plus_new_dataset_hard",
+        LMStyle.CodeQwenInstruct,
+        datetime(2023, 8, 30),
+        link="CodeDPO/qwen25-coder-inst-7b-testcaserm2-7b-reinforce_plus_new_dataset_hard",
+    ),
+    LanguageModel(
+        "CodeDPO/qwen25-ins-7b-coderm_new_margin_scalebt-7b-reinforce_plus_new_dataset",
+        "qwen25-ins-7b-coderm_new_margin_scalebt-7b-reinforce_plus_new_dataset",
+        LMStyle.CodeQwenInstruct,
+        datetime(2023, 8, 30),
+        link="CodeDPO/qwen25-ins-7b-coderm_new_margin_scalebt-7b-reinforce_plus_new_dataset",
+    ),
+    LanguageModel(
         "/data/code_llm/trained/qwen25-coder-7b-testcasermbinaryTrue-7b-reinforcepp_new_dataset_hard-binary",
         "qwen25-coder-7b-testcasermbinaryTrue-7b-reinforcepp_new_dataset_hard-binary",
         LMStyle.CodeQwenInstruct,
         datetime(2023, 8, 30),
-        link="https://huggingface.co/CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus",
+        link="CodeDPO/qwen25-ins-7b-coderm_new_margin_scalebt-7b-reinforce_plus_new_dataset",
     ),
     # -----------------------------------
     # -------- Custom RL Model ----------
