@@ -668,6 +668,13 @@ LanguageModelList: list[LanguageModel] = [
         datetime(2023, 8, 30),
         link="CodeDPO/qwen25-ins-7b-coderm_new_margin_scalebt-7b-reinforce_plus_new_dataset",
     ),
+    LanguageModel(
+        "CodeDPO/qwen25-coder-ins-7b-coderm_new_sigmoid-c7b-reinforce-plus",
+        "qwen25-coder-ins-7b-coderm_new_sigmoid-c7b-reinforce-plus",
+        LMStyle.CodeQwenInstruct,
+        datetime(2023, 8, 30),
+        link="CodeDPO/qwen25-coder-ins-7b-coderm_new_sigmoid-c7b-reinforce-plus",
+    ),
     # -----------------------------------
     # -------- Custom RL Model ----------
     # -----------------------------------
