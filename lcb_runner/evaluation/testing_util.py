@@ -705,7 +705,7 @@ def reliability_guard(maximum_memory_bytes=None):
 
     import builtins
 
-    builtins.exit = None
+    # builtins.exit = None
     builtins.quit = None
 
     import os

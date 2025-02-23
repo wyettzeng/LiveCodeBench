@@ -1,28 +1,20 @@
 #!/bin/bash
 
 # Available GPUs
-cuda_devices=(0 1 2 3 4 5 6 7)
+cuda_devices=(7)
 
 # We’ll store all commands in an array
 declare -a commands=()
 
 models=(
-    "Qwen/Qwen2.5-7B-Instruct"
-    "Qwen/Qwen2.5-Coder-7B"
-    "CodeDPO/qwen25-ins-7b-coderm-reinforce-plus"
-    "CodeDPO/qwen25-ins-7b-coderm-7b-ppo"
-    "CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus"
-    "CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus_new_dataset"
-    "CodeDPO/qwen25-ins-7b-testcaserm-7b-reinforce-plus-binary"
-    "CodeDPO/qwen25-coder-ins-7b-coderm_new_sigmoid-c7b-reinforce-plus"
-    "CodeDPO/qwen25-coder-base-7b-testcaserm-7b-ppo-binary"
+    "CodeDPO/qwen25-coder-inst-7b-reinforce-plus_v2_mini_processed_r1"
 )
 
 
 for model in ${models[@]}
 do
   commands+=( \
-    "python -m lcb_runner.runner.main --model $model --scenario codegeneration --evaluate --release_version release_v4" \
+    "python -m lcb_runner.runner.main --model $model --scenario codegeneration --evaluate --release_version release_v5" \
   )
 done
 

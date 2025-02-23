@@ -13,7 +13,9 @@ from lcb_runner.benchmarks.code_generation import CodeGenerationProblem
 class PromptConstants:
     SYSTEM_MESSAGE_GENERIC = f"You are an expert Python programmer. You will be given a question (problem specification) and will generate a correct Python program that matches the specification and passes all tests. You will NOT return anything except for the program."
 
-    SYSTEM_MESSAGE_GEMINI = f"You are an expert Python programmer. You will be given a question (problem specification) and will generate a correct Python program that matches the specification and passes all tests. You will NOT return anything except for the program. Do NOT use system calls like `exit` in the generated program."
+    SYSTEM_MESSAGE_GEMINI = f"You are an expert Python programmer. You will be given a question (problem specification) and will generate a correct Python program that matches the specification and passes all tests. Do NOT use system calls like `exit` in the generated program. Ensure that the first code block contains the solution."
+
+    SYSTEM_MESSAGE_GEMINITHINK = f"You are an expert Python programmer. You will be given a question (problem specification) and will generate a correct Python program that matches the specification and passes all tests."
 
     SYSTEM_MESSAGE_DEEPSEEK = f"You are an AI programming assistant, utilizing the DeepSeek Coder model, developed by DeepSeek Company, and you answer questions related to computer science."
 
@@ -58,6 +60,20 @@ def get_cllama_question_template_answer(question: CodeGenerationProblem):
         prompt += f"{PromptConstants.FORMATTING_WITHOUT_STARTER_CODE}\n"
         prompt += f"[PYTHON]\n# WRITE YOUR CODE HERE\n[/PYTHON]\n\n"
     prompt += f"### ANSWER (use the provided delimiters, read the inputs from stdin and write response to stdout)\n\n"
+    return prompt
+
+
+def get_geminithinking_question_template_answer(question: CodeGenerationProblem):
+    prompt = f"### Question:\n{question.question_content}\n\n"
+    if question.starter_code:
+        prompt += (
+            f"### Format: {PromptConstants.FORMATTING_MESSAGE_WITH_STARTER_CODE}\n"
+        )
+        prompt += f"```python\n{question.starter_code}\n```\n\n"
+    else:
+        prompt += f"### Format: {PromptConstants.FORMATTING_WITHOUT_STARTER_CODE}\n"
+        prompt += "```python\n# YOUR CODE HERE\n```\n\n"
+    prompt += f"### Answer: (use the provided format with backticks)\n\n"
     return prompt
 
 
@@ -279,9 +295,9 @@ def format_prompt_generation(
         prompt += f"{get_generic_question_template_answer(question)}"
         return prompt
 
-    if LanguageModelStyle == LMStyle.StarCoderInstruct:
-        prompt = f"{PromptConstants.SYSTEM_MESSAGE_GENERIC}\n"
-        prompt += f"{get_generic_question_template_answer(question)}"
+    if LanguageModelStyle == LMStyle.GeminiThinking:
+        prompt = f"{PromptConstants.SYSTEM_MESSAGE_GEMINITHINK}\n"
+        prompt += f"{get_geminithinking_question_template_answer(question)}"
         return prompt
 
     if LanguageModelStyle == LMStyle.MistralWeb:
