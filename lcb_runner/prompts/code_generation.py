@@ -32,6 +32,13 @@ class PromptConstants:
         f"<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user"
     )
 
+    SYSTEM_MESSAGE_DEEPSEEK_R1 = (
+        "<｜begin▁of▁sentence｜>A conversation between User and Assistant. "
+        "The user asks a question, and the Assistant solves it. "
+        "The assistant first thinks about the reasoning process in the mind and then provides the user with the answer. "
+        "The reasoning process and answer are enclosed within <think> </think> and <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.<｜User｜>"
+    )
+
     FORMATTING_MESSAGE_WITH_STARTER_CODE = "You will use the following starter code to write the solution to the problem and enclose your code within delimiters."
 
     FORMATTING_WITHOUT_STARTER_CODE = "Read the inputs from stdin solve the problem and write the answer to stdout (do not directly test on the sample inputs). Enclose your code within delimiters as follows."
@@ -176,6 +183,20 @@ def get_codeqwen_question_template_answer(question: CodeGenerationProblem):
         prompt += f"{PromptConstants.FORMATTING_WITHOUT_STARTER_CODE}\n"
         prompt += f"```python\n# YOUR CODE HERE\n```\n\n<|im_end|>\n"
     prompt += f"<|im_start|>assistant\n"
+    return prompt
+
+
+def get_deepseek_r1_question_template_answer(question: CodeGenerationProblem):
+    # Following modifications from: https://github.com/fanqiwan/FuseAI/blob/main/FuseO1-Preview/code_evaluation/lcb_runner_cq/prompts/code_generation.py
+    prompt = "You will be given a question (problem specification) and will generate a correct Python program that matches the specification and passes all tests.\n\n"
+    prompt += f"Question: {question.question_content}\n\n"
+    if question.starter_code:
+        prompt += f"{PromptConstants.FORMATTING_MESSAGE_WITH_STARTER_CODE}\n"
+        prompt += f"```python\n{question.starter_code}\n```\n\n"
+    else:
+        prompt += f"{PromptConstants.FORMATTING_WITHOUT_STARTER_CODE}\n"
+        prompt += f"```python\n# YOUR CODE HERE\n```\n\n"
+    prompt += f"<｜Assistant｜>"
     return prompt
 
 
@@ -333,47 +354,9 @@ def format_prompt_generation(
         prompt += f"{get_codeqwen_question_template_answer(question)}"
         return prompt
 
-    if LanguageModelStyle == LMStyle.CodeLLaMaInstruct:
-        prompt = f"[INST] <<SYS>>\n"
-        prompt += f"{PromptConstants.SYSTEM_MESSAGE_GENERIC}\n"
-        prompt += f"<</SYS>>\n\n"
-        prompt += f"{get_cllama_question_template_answer(question)}\n"
-        prompt += f"[/INST]"
-        return prompt
-
-    if LanguageModelStyle == LMStyle.MagiCoder:
-        prompt = f"{PromptConstants.SYSTEM_MESSAGE_MAGIC}\n"
-        prompt += f"{get_magicoder_question_template_answer(question)}"
-        return prompt
-
-    if LanguageModelStyle == LMStyle.WizardCoder:
-        prompt = f"{PromptConstants.SYSTEM_MESSAGE_WIZARD}\n\n"
-        prompt += f"{get_wizard_question_template_answer(question)}"
-        return prompt
-
-    if LanguageModelStyle == LMStyle.Phind:
-        prompt = f"### System Prompt\n\n"
-        prompt += f"{PromptConstants.SYSTEM_MESSAGE_PHIND}\n\n"
-        prompt += f"### User Message\n\n"
-        prompt += f"{get_phind_question_template_answer(question)}"
-        return prompt
-
-    if LanguageModelStyle == LMStyle.OC:
-        prompt = f"{PromptConstants.SYSTEM_MESSAGE_GENERIC}\n\n"
-        prompt += f"{get_generic_question_template_answer(question)}"
-        return prompt
-
-    if LanguageModelStyle == LMStyle.Eurusx:
-        prompt = "[INST] Write Python code to solve the task:\n"
-        prompt += f"{get_generic_question_template_answer(question)}"
-        prompt += "[/INST]"
-        return prompt
-
-    if (
-        LanguageModelStyle == LMStyle.Smaug2
-        or LanguageModelStyle == LMStyle.Qwen1point5
-    ):
-        prompt = f"{get_qwen_question_template_answer(question)}"
+    if LanguageModelStyle == LMStyle.DeepSeekR1:
+        prompt = f"{PromptConstants.SYSTEM_MESSAGE_DEEPSEEK_R1}"
+        prompt += f"{get_deepseek_r1_question_template_answer(question)}"
         return prompt
 
     if LanguageModelStyle == LMStyle.GenericBase:
